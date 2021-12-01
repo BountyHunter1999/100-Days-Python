@@ -7,10 +7,68 @@ word_list = ["misery", "greed", "life", "pokemon"]
 
 # Randomly CHoose a word from the word_list and assign it to a variable called chosen_word
 random_word = random.choice(word_list)
-# random_word_l = list(random_word)
+random_word_l = list(random_word)
 # print(random_word)
 
-life = 6
+stages = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''']
+
+
+life = len(stages) # 7
 our_word = ["_" for _ in random_word]
 
 guess_letters = []
@@ -38,8 +96,8 @@ while life:
             our_word == check_output
             print(f"{our_word}")
         else:
+            print(f"{stages[7 - life]}")
             life -= 1
-            print(f"Life -1")
     else:
         print("try another letter it's already used")
     
