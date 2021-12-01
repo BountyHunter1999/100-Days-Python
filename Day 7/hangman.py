@@ -68,7 +68,7 @@ stages = ['''
 ''']
 
 
-life = len(stages) # 7
+life = len(stages) - 1 # 6
 our_word = ["_" for _ in random_word]
 
 guess_letters = []
@@ -94,10 +94,11 @@ while life:
         check_output = check(locations, our_word, guess)
         if check_output:
             our_word == check_output
-            print(f"{our_word}")
         else:
-            print(f"{stages[life - 1]}")
             life -= 1
+
+        print(f"{our_word}")
+        print(f"{stages[life]}")
     else:
         print("try another letter it's already used")
     
