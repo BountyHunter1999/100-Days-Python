@@ -1,22 +1,36 @@
+from logo import logo
+
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
  'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f',
  'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-total = len(alphabet)
+print(logo)
 
 def encode_decode(word, shift, encode=True):
     new_word = ''
     if not encode:
         shift *= -1
     for i, l in enumerate(word):
-        new_index = (alphabet.index(l) + shift) % total
-        new_word += alphabet[new_index]
+        if l in alphabet:
+            new_index = (alphabet.index(l) + shift) % total
+            new_word += alphabet[new_index]
+        else:
+            new_word += l
+
     return new_word
 
-if direction == 'encode':
-    print(encode_decode(word=text, shift=shift))
-else:
-    print(encode_decode(word=text, shift=shift, encode=False))
+while True:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    total = len(alphabet)
+
+    if direction == 'encode':
+        print(encode_decode(word=text, shift=shift))
+    else:
+        print(encode_decode(word=text, shift=shift, encode=False))
+
+    con = input("Continue? Y or N: ").lower() == "y"
+    if not con:
+        break 
+
