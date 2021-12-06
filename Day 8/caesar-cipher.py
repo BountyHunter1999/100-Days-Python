@@ -30,5 +30,6 @@ while True:
 
     con = input("Continue? Y or N: ").lower() == "y"
     if not con:
+        print("GOODBYE !!")
         break 
 
