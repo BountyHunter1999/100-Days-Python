@@ -7,21 +7,16 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 total = len(alphabet)
 
-def encode(word, shift):
+def encode_decode(word, shift, encode=True):
     new_word = ''
+    if not encode:
+        shift *= -1
     for i, l in enumerate(word):
         new_index = (alphabet.index(l) + shift) % total
         new_word += alphabet[new_index]
     return new_word
 
-def decode(word, shift):
-    new_word = ''
-    for i, l in enumerate(word):
-        new_index = (alphabet.index(l) - shift) % total
-        new_word += alphabet[new_index]
-    return new_word
-
 if direction == 'encode':
-    print(encode(word=text, shift=shift))
+    print(encode_decode(word=text, shift=shift))
 else:
-    print(decode(word=text, shift=shift))
+    print(encode_decode(word=text, shift=shift, encode=False))
