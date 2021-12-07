@@ -24,7 +24,7 @@ operations = {
 }
 def calculator():
     print(logo)
-    num1 = int(input("Enter the first number: "))
+    num1 = float(input("Enter the first number: "))
     should_continue = True
 
     while should_continue:
@@ -39,18 +39,17 @@ def calculator():
             break
 
 
-        num2 = int(input("Enter the next number: "))
+        num2 = float(input("Enter the next number: "))
         result = operations[operator](num1, num2)
 
         print(f"{num1} {operator} {num2} = {result} ")
 
-        should_continue = input(f"Type 'y' to continue calculating with the answer {result}: ").lower()
+        should_continue = input(f"""Type 'y' to continue calculating with the answer {result}:
+        or, type 'n' to start a new calculator""").lower()
         if should_continue == 'y':
             num1 = result
             continue
-        
-        restart = input("\nType 'y' if u want to restart the calculator: ").lower() == 'y'
-        if restart:
+        elif should_continue == 'n':
             os.system(os_clear)
             calculator()
         
