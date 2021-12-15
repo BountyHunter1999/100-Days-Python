@@ -9,13 +9,14 @@ from random import choice
 os_clear = "cls" if os.name == 'nt' else "clear"
 
 # get two datas
-def get_datas():
+def get_data():
     """
-    return two randomly selected datas
+    return a randomly selected datas
     """
-    d1 = choice(data)
-    d2 = choice(data)
-    return d1, d2
+    d = choice(data)
+    # d2 = choice(data)
+    # return d1, d2
+    return d
 
 # print(get_datas())
 
@@ -63,12 +64,18 @@ def guess_correct(d1, d2, score, guess):
 def game():
     score = 0
     game_on = True
+    d2 = get_data()
     while game_on:
         # clean the screen
         os.system(os_clear)
+        d1 = d2
+        
+        d2 = get_data()
+        while d1 == d2:
+            # d1 and d2 must be different
+            d2 = get_data()
+        # d1, d2 = get_datas()
 
-        d1, d2 = get_datas()
-        # show_datas(*get_datas())
         show_datas(d1, d2)
 
         # ask the user if the follower count of the other is higher or lower
