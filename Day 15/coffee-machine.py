@@ -94,9 +94,3 @@ def coffee_order():
 while True:
     coffee_order()
     os.system(os_clear)
-
-
-
-# TODO: Check transaction successful
-
-# TODO: Make Coffee
