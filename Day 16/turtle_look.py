@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle_look import Turtle, Screen
 
 tom = Turtle()
 tom.shape('turtle')
