@@ -15,11 +15,12 @@ class CoffeeMaker:
 
     def is_resource_sufficient(self, drink):
         """Returns True when order can be made, False if ingredients are insufficient."""
+        sufficient = True
         for item in drink.ingredients:
             if drink.ingredients[item] > self.resources[item]:
                 print(f"Sorry there is not enough {item}.")
-                return False
-        return True
+                sufficient =  False
+        return sufficient
 
     def make_coffee(self, order):
         """Deducts the required ingredients from the resources."""
