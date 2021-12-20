@@ -22,10 +22,8 @@ def draw_shape(sides):
         tom.forward(100)
         tom.left(internal_angle)
 
-
 for side in range(3, 11):
     draw_shape(side)
 
 screen = Screen()
-screen.colormode(255)
 screen.exitonclick()
