@@ -5,7 +5,7 @@ import random
 turtle.colormode(255)
 
 tom = Turtle()
-tom.pensize(10)
+tom.pensize(3)
 # tom.speed(10)
 
 tom.speed("fastest")
@@ -20,26 +20,16 @@ def change_color():
     return r, g, b
 
 
-# colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen",
-#            "wheat", "SlateGray", "SeaGreen"]
-
-# def change_color():
-#     return random.choice(colours)
-
-
-def move(ang):
-    tom.color(change_color())
-
-    tom.forward(50)
-    tom.setheading(ang)
-    # tom.left(direction)
+def draw_spirograph(gap_size):
+    steps = int(360 / gap_size)
+    for _ in range(steps):
+        tom.circle(100)
+        tom.color(change_color())
+        # tom.left(10)
+        tom.setheading(tom.heading() + gap_size)
 
 
-angles = list(range(0, 271, 90))
-
-for _ in range(200):
-    direction = random.choice(angles)
-    move(direction)
+draw_spirograph(10)
 
 screen = Screen()
 screen.exitonclick()
