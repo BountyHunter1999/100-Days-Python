@@ -2,9 +2,14 @@ import turtle
 from turtle import Turtle, Screen
 import random
 
-tom = Turtle()
-tom.shape("classic")
 turtle.colormode(255)
+
+tom = Turtle()
+tom.pensize(10)
+# tom.speed(10)
+
+tom.speed("fastest")
+tom.shape("classic")
 
 
 def change_color():
@@ -15,15 +20,26 @@ def change_color():
     return r, g, b
 
 
-def draw_shape(sides):
-    internal_angle = int(360 / sides)
-    tom.color(change_color())
-    for _ in range(sides):
-        tom.forward(100)
-        tom.left(internal_angle)
+# colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen",
+#            "wheat", "SlateGray", "SeaGreen"]
 
-for side in range(3, 11):
-    draw_shape(side)
+# def change_color():
+#     return random.choice(colours)
+
+
+def move(ang):
+    tom.color(change_color())
+
+    tom.forward(50)
+    tom.setheading(ang)
+    # tom.left(direction)
+
+
+angles = list(range(0, 271, 90))
+
+for _ in range(200):
+    direction = random.choice(angles)
+    move(direction)
 
 screen = Screen()
 screen.exitonclick()
