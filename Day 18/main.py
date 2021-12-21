@@ -1,35 +1,32 @@
 import turtle
 from turtle import Turtle, Screen
+import colorgram
 import random
 
 turtle.colormode(255)
 
 tom = Turtle()
 tom.pensize(3)
-# tom.speed(10)
 
 tom.speed("fastest")
 tom.shape("classic")
 
+rgb_colors = []
 
-def change_color():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-
-    return r, g, b
+colors = colorgram.extract('image.jpg', 30)
+for color in colors:
+    rgb_colors.append(color.rgb)
 
 
-def draw_spirograph(gap_size):
-    steps = int(360 / gap_size)
-    for _ in range(steps):
-        tom.circle(100)
-        tom.color(change_color())
-        # tom.left(10)
-        tom.setheading(tom.heading() + gap_size)
-
-
-draw_spirograph(10)
+tom.penup()
+tom.goto(-600, -300)
+for _ in range(10):
+    tom.sety(tom.ycor() + 50)
+    tom.goto(-200, tom.ycor())
+    for _ in range(10):
+        color = random.choice(rgb_colors)
+        tom.dot(20, color)
+        tom.forward(50)
 
 screen = Screen()
 screen.exitonclick()
