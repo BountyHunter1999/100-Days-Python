@@ -6,10 +6,11 @@ import random
 turtle.colormode(255)
 
 tom = Turtle()
-tom.pensize(3)
+tom.hideturtle()
+# tom.pensize(3)
 
 tom.speed("fastest")
-tom.shape("classic")
+# tom.shape("classic")
 
 rgb_colors = []
 
@@ -20,6 +21,7 @@ for color in colors:
 
 tom.penup()
 tom.goto(-600, -300)
+
 for _ in range(10):
     tom.sety(tom.ycor() + 50)
     tom.goto(-200, tom.ycor())
