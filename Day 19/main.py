@@ -1,44 +1,46 @@
 from turtle import Turtle, Screen
+import random
 
-tom = Turtle()
+colors = ["red", "green", "purple", "yellow", "orange", "blue"]
 
-
-def move_forward():
-    tom.forward(10)
-
-
-def move_backward():
-    tom.backward(10)
-
-
-def move_left():
-    new_heading = tom.heading() + 10
-    tom.setheading(new_heading)
-    # tom.left(90)
-    # tom.forward(50)
+turtles = []
+for i, color in enumerate(colors):
+    turtles.append(Turtle(shape="turtle"))
+    turtles[i].color(color)
+    turtles[i].penup()
+    turtles[i].goto(-230, -40 + i * 30)
 
 
-def move_right():
-    new_heading = tom.heading() - 10
-    tom.setheading(new_heading)
-    # tom.left(-90)
-    # tom.forward(50)
+def steps():
+    return random.choice(range(0, 20))
 
 
-def clr():
-    # tom.clear()
-    # tom.penup()
-    # tom.home()
-    # tom.pendown()
-    screen.resetscreen()
+def move(player):
+    player.forward(steps())
+
+
+def check_end_reached(turtles, selected_color):
+    for turtle in turtles:
+        if turtle.xcor() >= 230:
+            print(turtle.xcor())
+            if turtle.pencolor() == selected_color:
+                print("CONGRATS! Your Turtle Won!!")
+            else:
+                print(f"You Lost!!, {turtle.pencolor()} Turtle won ")
+            return True
+
+    return False
 
 
 screen = Screen()
-screen.onkey(fun=move_forward, key='w')  # move forward
-screen.onkey(fun=move_backward, key='s')  # move in backward
-screen.onkey(fun=move_left, key='a')  # move left
-screen.onkey(fun=move_right, key='d')  # move right
-screen.onkey(fun=clr, key="c")
+screen.setup(width=500, height=400)
+user_bet = screen.textinput(title="YOLO", prompt="Which turtle will win the race? Enter a color: ")
 
-screen.listen()
+print(turtles[0].pencolor())
+while True:
+    player = random.choice(turtles)
+    move(player)
+    if check_end_reached(turtles, user_bet):
+        break
+
 screen.exitonclick()
