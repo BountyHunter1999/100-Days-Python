@@ -21,8 +21,7 @@ screen.onkey(fun=snake.left, key="Left")
 
 while True:
     screen.update()
-    time.sleep(1)
-
+    time.sleep(0.1)
 
     snake.move()
 
