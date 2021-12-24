@@ -1,26 +1,29 @@
-from turtle import Turtle, Screen
+import time
+from turtle import Screen
+
+from snake import Snake
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
+screen.tracer(0)  # tracer is off, screen won't update
 
-snake = Turtle(shape="square")
-snake.penup()
-snake.turtlesize(stretch_len=3)
-snake.color("white")
+game_on = True
 
-
-def move_forward():
-    snake.forward(10)
-
-def move_left():
-    snake.left(90)
-
-
-screen.onkey(fun=move_forward, key="f")
-screen.onkey(fun=move_left, key="w")
-print(snake.shapesize())
-
+snake = Snake()
 screen.listen()
+
+screen.onkey(fun=snake.up, key="Up")
+screen.onkey(fun=snake.down, key="Down")
+screen.onkey(fun=snake.right, key="Right")
+screen.onkey(fun=snake.left, key="Left")
+
+while True:
+    screen.update()
+    time.sleep(1)
+
+
+    snake.move()
+
 screen.exitonclick()
