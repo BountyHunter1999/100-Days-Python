@@ -55,7 +55,7 @@ def search_website():
     try:
         f = open("data.json", "r")
     except FileNotFoundError:
-        messagebox.showinfo(message="File Doesn't Exist.\n Try Adding a password")
+        messagebox.showinfo(title="Error", message="File Doesn't Exist.\n Try Adding a password")
     else:
         data = json.load(f)
         website = website_entry.get()
