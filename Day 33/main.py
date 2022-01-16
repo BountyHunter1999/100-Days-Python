@@ -55,8 +55,6 @@ def is_night_time():
     return False
 
 
-print(is_night_time())
-
 while True:
     time.sleep(60)
     if is_night_time() and is_iss_near():
