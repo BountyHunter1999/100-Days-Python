@@ -5,23 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="favicon.ico?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,300&family=Sacramento&display=swap" rel="stylesheet">
     <title>My Personal Site</title>
 </head>
 <body>
-    <div class="top-div">
-        <img src="images/cloud.png" alt="cloud-img">
+    <div class="top-container">
+        <img id="top-cloud" src="images/cloud.png" alt="cloud-img">
         <h1>I'm Shrish.</h1>
-        <p>a programmer.</p>
-        <img src="images/cloud.png" alt="cloud-img">
+        <h2 id="my-description">a programmer.</h2>
+        <img id="bot-cloud" src="images/cloud.png" alt="cloud-img">
         <img src="images/mountain.png" alt="mountain-img">
     </div>
-
-    <div class='mid-div'>
-
-    </div>
-
-    <div class="bot-div">
-
-    </div>
+    <div class="middle-container">
+        <div class="profile">
+          <img src="images/my-pseudo-pic.png" alt="my-pseudo-pic" id="my-pseudo-pic" class="site-images">
+          <h2>Hello.</h2>
+          <p class="intro">I am a python developer focusing in deep learning and web development. </p>
+        </div>
+        <hr>
+        <div class="skills">
+          <h2>My Skills.</h2>
+          <div class="skill-row">
+            <img class="site-images" id='dp' src="images/deep-learning.png" alt="deep-learning">
+            <h3>Deep Learning</h3>
+            <p>Working with various deep learning models and create models. CNN, ANN, GANS, and so on..</p>
+          </div>
+          <div class="skill-row">
+            <img class="site-images" id= 'wd' src="images/computer.png" alt="computer-pic">
+            <h3>Web Development</h3>
+            <p>Creating web apps using django and react or plain django. I can also work effectively with flask.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="contact-me">
+          <h2>Get In Touch</h2>
+          <h3>If you like to code or hire me.</h3>
+          <p class="contact-message">Let's talk and probably make awesome projects together!</p>
+          <a class="btn" href="mailto:adhikari.shrish1@gmail.com">CONTACT ME</a>
+        </div>
+      </div>
+      
+      
+      <div class="bottom-container">
+        <a class="footer-link" href="https://www.linkedin.com/in/shrish-adhikari-364001159/">LinkedIn</a>
+        <a class="footer-link" href="https://github.com/BountyHunter1999">Github</a>
+        <p class="copyright">© 2022 Shrish Adhikari.</p>
+      </div>
+      
 </body>
 </html>
