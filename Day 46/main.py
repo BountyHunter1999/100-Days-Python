@@ -1,40 +1,48 @@
+import csv
+
 import requests
 from bs4 import BeautifulSoup
 import lxml
 import os
 from dotenv import load_dotenv
+import time
 
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
+# local
+from playlist import Playlist
 
 load_dotenv()
 
 SPOTIPY_CLIENT_ID = os.getenv("CLIENT_ID")
 SPOTIPY_CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 SPOTIPY_REDIRECT_URI = os.getenv("SPOTIPY_REDIRECT_URI")
+USER_ID = os.getenv("USER_ID")
 
-URL = "https://www.billboard.com/charts/hot-100/1999-03-06/"
+playlist = Playlist(client_id=SPOTIPY_CLIENT_ID, user_id=USER_ID,
+                    secret=SPOTIPY_CLIENT_SECRET, uri=SPOTIPY_REDIRECT_URI)
 
-response = requests.get(URL).text
+# time = input("Which year do you want to travel to? Type the date in this format: YYYY-MM-DD: ")
+time_period = "1999-03-01"
+url = f"https://www.billboard.com/charts/hot-100/{time_period}/"
+
+response = requests.get(url).text
 
 soup = BeautifulSoup(response, "lxml")
 
-# print(soup.prettify())
-song_title = soup.find(name="h3", class_='c-title').text.strip()
-song_singer = soup.find(name="span", class_='a-no-trucate').text.strip()
-song_ranking = soup.find(name="span", class_='c-label').text.strip()
-
-title_tag = soup.find_all(name="h3", class_='c-title')
+title_tag = soup.find_all(name="h3", class_='a-no-trucate')
 titles = [tag.text.strip() for tag in title_tag]
 
 singer_tag = soup.find_all(name="span", class_='a-no-trucate')
 singers = [tag.text.strip() for tag in singer_tag]
 
-rank_tag = soup.find_all(name="span", class_='c-label')
-ranks = [tag.text.strip() for tag in rank_tag]
+# rank_tag = soup.find_all(name="span", class_='c-label')
+# ranks = [tag.text.strip() for tag in rank_tag]
 
-songs = list(zip(ranks, titles, singers))
+songs = list(zip(titles, singers))
+
+# print(ranks[:10])
 
 #  SPOTIFY PART
 
@@ -43,13 +51,62 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                redirect_uri=SPOTIPY_REDIRECT_URI,
                                                scope="user-library-read"))
 
+# gr_uri = "spotify:artist:7tjbDPvrdvDshcpEMXKRVb"  # url end part
+# results = sp.artist_top_tracks(gr_uri)
+#
+# for track in results['tracks'][:10]:
+#     print(f'Track   : {track["name"]}')
+#     print(f'Audio   : {track["preview_url"]}')
+#     print(f'Cover art   : {track["album"]["images"][0]["url"]}')
+#     print()
 
-gr_uri = "spotify:artist:7tjbDPvrdvDshcpEMXKRVb"  # url end part
-results = sp.artist_top_tracks(gr_uri)
 
-for track in results['tracks'][:10]:
-    print(f'Track   : {track["name"]}')
-    print(f'Audio   : {track["preview_url"]}')
-    print(f'Cover art   : {track["album"]["images"][0]["url"]}')
-    print()
+# query = f"track:{titles[0]} artist:{singers[0]}"
+# track = sp.search(q=query, type='track')['tracks']["items"]
+# for t in track:
+#     print(f"Artist: {t['artists'][0]['name']}")
+#     print(f"Song URI: {t['album']['uri']}")
+#     print(f"Song URL: {t['href']}")
+#     print("\n\n")
+# for data in track['album']['artists']:
+#     # if data['name'] == song_singer[0].upper():
+#     print(data['uri'])
+#     break
 
+# print(track)
+
+# Create Playlist
+playlist_id = playlist.create_playlist(name=f"{time_period} Billboard 100")
+
+# Add track to playlist
+
+song_uri = []
+skipped_songs = []
+for i in range(len(titles)):
+    title = titles[i]
+    singer = singers[i]
+    query = f"track:{title} artist:{singer}"
+    try:
+        track = sp.search(q=query, type='track')['tracks']["items"][0]
+    except IndexError:
+        print("This song doesn't exist in spotify. SKIPPED!")
+        skipped_songs.append((title, singer))
+    else:
+        song_uri.append(track['uri'])
+
+    time.sleep(1)
+
+    print(f"Went through {i + 1} / {100}")
+
+print("ADDING SONGS")
+# print(song_uri[:3])
+# song_uri = ["spotify:track:1AM1o0mKbgAK5oMpY8B3Z7"]
+playlist.add_song_to_playlist(playlist_id=playlist_id, tracks=song_uri)
+
+with open("skipped_songs.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(("SONG", "ARTIST"))
+    for song in skipped_songs:
+        writer.writerow(song)
+
+print(len(skipped_songs))
