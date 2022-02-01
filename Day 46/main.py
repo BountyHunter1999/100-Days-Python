@@ -23,8 +23,7 @@ USER_ID = os.getenv("USER_ID")
 playlist = Playlist(client_id=SPOTIPY_CLIENT_ID, user_id=USER_ID,
                     secret=SPOTIPY_CLIENT_SECRET, uri=SPOTIPY_REDIRECT_URI)
 
-# time = input("Which year do you want to travel to? Type the date in this format: YYYY-MM-DD: ")
-time_period = "1999-03-01"
+time_period = input("Which year do you want to travel to? Type the date in this format: YYYY-MM-DD: ")
 url = f"https://www.billboard.com/charts/hot-100/{time_period}/"
 
 response = requests.get(url).text
@@ -37,12 +36,7 @@ titles = [tag.text.strip() for tag in title_tag]
 singer_tag = soup.find_all(name="span", class_='a-no-trucate')
 singers = [tag.text.strip() for tag in singer_tag]
 
-# rank_tag = soup.find_all(name="span", class_='c-label')
-# ranks = [tag.text.strip() for tag in rank_tag]
-
 songs = list(zip(titles, singers))
-
-# print(ranks[:10])
 
 #  SPOTIFY PART
 
@@ -50,30 +44,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                client_secret=SPOTIPY_CLIENT_SECRET,
                                                redirect_uri=SPOTIPY_REDIRECT_URI,
                                                scope="user-library-read"))
-
-# gr_uri = "spotify:artist:7tjbDPvrdvDshcpEMXKRVb"  # url end part
-# results = sp.artist_top_tracks(gr_uri)
-#
-# for track in results['tracks'][:10]:
-#     print(f'Track   : {track["name"]}')
-#     print(f'Audio   : {track["preview_url"]}')
-#     print(f'Cover art   : {track["album"]["images"][0]["url"]}')
-#     print()
-
-
-# query = f"track:{titles[0]} artist:{singers[0]}"
-# track = sp.search(q=query, type='track')['tracks']["items"]
-# for t in track:
-#     print(f"Artist: {t['artists'][0]['name']}")
-#     print(f"Song URI: {t['album']['uri']}")
-#     print(f"Song URL: {t['href']}")
-#     print("\n\n")
-# for data in track['album']['artists']:
-#     # if data['name'] == song_singer[0].upper():
-#     print(data['uri'])
-#     break
-
-# print(track)
 
 # Create Playlist
 playlist_id = playlist.create_playlist(name=f"{time_period} Billboard 100")
