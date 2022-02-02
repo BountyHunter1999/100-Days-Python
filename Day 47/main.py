@@ -36,18 +36,21 @@ soup = BeautifulSoup(response, "lxml")
 
 price_right_now = float(soup.find(name="span", class_="a-price a-text-price a-size-medium apexPriceToPay")
                         .span.text.split("$")[1].replace(",", ""))
+product_title = soup.find(name='span', id='productTitle').text.strip()
+# print(product_title)
 print(price_right_now)
 
 
-def send_mail(price):
+def send_mail(title, price):
+    msg = f"{title} is now ${price} \n {URL}"
     print("SENDING MAIL")
-    msg = f"SUBJECT: PRICE WITHIN YOUR RANGE!! \n\n Price right now is {price}"
+    message = f"SUBJECT: PRICE WITHIN YOUR RANGE!! \n\n {msg}"
     with smtplib.SMTP('smtp.gmail.com') as con:
         con.starttls()
         con.login(SENDER_EMAIL, SENDER_PW)
-        con.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg=msg)
+        con.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg=message)
 
 
 desired_price = float(input("Enter the desired price for the product: "))
 if price_right_now <= desired_price:
-    send_mail(price_right_now)
+    send_mail(product_title, price_right_now)
