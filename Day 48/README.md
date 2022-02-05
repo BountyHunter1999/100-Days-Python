@@ -25,3 +25,7 @@
 - clicked a button (`by="xpath"`)
 
 ## Task_4
+- made selenium play [cookie game](http://orteil.dashnet.org/experiments/cookie/)
+- each 5 sec get the most expensive upgrade
+- after 5 minute print the Cookie's per sec and end the game
+
