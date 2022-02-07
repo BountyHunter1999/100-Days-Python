@@ -3,3 +3,4 @@ __pycache__
 .env
 .cache
 skipped_songs.csv
+Pipfile.lock
