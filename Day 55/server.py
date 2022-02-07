@@ -31,5 +31,4 @@ def check(num):
 
 if __name__ == '__main__':
     print(guess_number)
-
     app.run(debug=True, host="0.0.0.0", port=8080)
