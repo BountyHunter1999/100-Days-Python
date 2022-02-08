@@ -1,58 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="icon" href="static/images/favicon.ico?v=2">
-    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,300&family=Sacramento&display=swap" rel="stylesheet">
-    <title>My Personal Site</title>
-</head>
-<body>
-    <div class="top-container">
-        <img id="top-cloud" src="static/images/cloud.png" alt="cloud-img">
-        <h1>I'm Shrish.</h1>
-        <h2 id="my-description">a programmer.</h2>
-        <img id="bot-cloud" src="static/images/cloud.png" alt="cloud-img">
-        <img src="static/images/mountain.png" alt="mountain-img">
-    </div>
-    <div class="middle-container">
-        <div class="profile">
-          <img src="static/images/my-pseudo-pic.png" alt="my-pseudo-pic" id="my-pseudo-pic" class="site-images">
-          <h2>Hello.</h2>
-          <p class="intro">I am a python developer focusing in deep learning and web development. </p>
-        </div>
-        <hr>
-        <div class="skills">
-          <h2>My Skills.</h2>
-          <div class="skill-row">
-            <img class="site-images" id='dp' src="static/images/deep-learning.png" alt="deep-learning">
-            <h3>Deep Learning</h3>
-            <p>Working with various deep learning models and create models. CNN, ANN, GANS, and so on..</p>
-          </div>
-          <div class="skill-row">
-            <img class="site-images" id= 'wd' src="static/images/computer.png" alt="computer-pic">
-            <h3>Web Development</h3>
-            <p>Creating web apps using django and react or plain django. I can also work effectively with flask.</p>
-          </div>
-        </div>
-        <hr>
-        <div class="contact-me">
-          <h2>Get In Touch</h2>
-          <h3>If you like to code or hire me.</h3>
-          <p class="contact-message">Let's talk and probably make awesome projects together!</p>
-          <a class="btn" href="mailto:adhikari.shrish1@gmail.com">CONTACT ME</a>
-        </div>
-      </div>
-      
-      
-      <div class="bottom-container">
-        <a class="footer-link" href="https://www.linkedin.com/in/shrish-adhikari-364001159/">LinkedIn</a>
-        <a class="footer-link" href="https://github.com/BountyHunter1999">Github</a>
-        <p class="copyright">© 2022 Shrish Adhikari.</p>
-      </div>
-      
-</body>
+<!DOCTYPE HTML>
+<!--
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Shrish Adhikari</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/css/noscript.css" /></noscript>
+		<link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#" class="icon solid fa-home"><span>Home</span></a>
+						<a href="#work" class="icon solid fa-folder"><span>Work</span></a>
+						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+						<a href="https://discord.gg/mmnRAYZshP" class="icon brands fa-discord"><span>Discord</span></a>
+						<a href="https://www.linkedin.com/in/shrish-adhikari-364001159/" class="icon brands fa-linkedin"><span>LinkedIn</span></a>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Me -->
+							<article id="home" class="panel intro">
+								<header>
+									<h1>Shrish Adhikari</h1>
+									<p>A python programmer</p>
+								</header>
+								<a href="#work" class="jumplink pic">
+									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
+									<img src="static/images/my-pseudo-pic.png" alt="my-psuedo-pic" />
+								</a>
+							</article>
+
+						<!-- Work -->
+							<article id="work" class="panel">
+								<header>
+									<h2>Work</h2>
+								</header>
+								<p>
+									Highly motivated programmer and technology enthusiast with experience from creating
+									GUI apps to Web apps and machine learning models. Currently, looking to expand
+									knowledge on machine learning, deep learning, and blockchain
+								</p>
+								<section>
+									<div class="row">
+										<div class="col-4 col-6-medium col-12-small">
+											<a href="https://github.com/BountyHunter1999/Blockchain" class="image fit">
+												<img src="static/images/blockchain.jpg" alt="blockchain"></a>
+										</div>
+										<div class="col-4 col-6-medium col-12-small">
+											<a href="https://github.com/BountyHunter1999/Learning-PyTorch-Notebooks" class="image fit">
+												<img src="static/images/deep-learning.png" alt="deep learning"></a>
+										</div>
+										<div class="col-4 col-6-medium col-12-small">
+											<a href="https://github.com/BountyHunter1999" class="image fit">
+												<img src="static/images/web-dev.png" alt="web-dev"></a>
+										</div>
+									</div>
+								</section>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact" class="panel">
+								<header>
+									<h2>Contact Me</h2>
+								</header>
+								<form action="mailto:adhikari.shrish1@gmail.com" method="post" enctype="text/plain">
+									<div>
+										<div class="row">
+											<div class="col-6 col-12-medium">
+												<input type="text" name="name" placeholder="Name" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="email" placeholder="Email" />
+											</div>
+											<div class="col-12">
+												<input type="text" name="subject" placeholder="Subject" />
+											</div>
+											<div class="col-12">
+												<textarea name="message" placeholder="Message" rows="6"></textarea>
+											</div>
+											<div class="col-12">
+												<input type="submit" value="Send Message" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<div id="footer">
+						<ul class="copyright">
+							<li>&copy; Shrish Adhikari.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/browser.min.js"></script>
+			<script src="static/js/breakpoints.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+
+	</body>
 </html>

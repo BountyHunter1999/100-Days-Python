@@ -2,6 +2,8 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+# template is from https://html5up.net/ astral
+
 
 @app.route("/")
 def home():
